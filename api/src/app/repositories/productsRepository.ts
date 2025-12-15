@@ -1,6 +1,10 @@
 import { Product } from '../../models/Product.js';
 import type { ProductDto } from '../../schemas/product.schema.js';
 
+export const listProducts = async () => {
+  return await Product.find({});
+};
+
 export const createProducts = async (product: ProductDto) => {
   return await Product.create(product);
 };
