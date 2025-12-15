@@ -5,8 +5,6 @@ import { createProducts } from '../../repositories/productsRepository.js';
 export const createProductssService = async (product: ProductDto) => {
   const exists = await Product.findOne({ name: product.name });
 
-  console.log(product);
-
   if (exists) {
     throw new Error('Product already exists');
   }

@@ -2,7 +2,8 @@ import { Router } from 'express';
 import { listCategoryController } from './app/controllers/categories/listCategoriesController.js';
 import { createCategoriesController } from './app/controllers/categories/createCatogoriesController.js';
 import { deleteCategoriesController } from './app/controllers/categories/deleteCategoriesController.js';
-import { createProductController } from './app/controllers/products/createProductController.js';
+import { createProductsController } from './app/controllers/products/createProductsController.js';
+import { listProductsController } from './app/controllers/products/listProductsController.js';
 
 export const router = Router();
 
@@ -16,17 +17,15 @@ router.post('/categories', createCategoriesController);
 router.delete('/categories/:id', deleteCategoriesController);
 
 //list products
-// router.get('/products', createProductController);
+router.get('/products', listProductsController);
 
 //create product
-router.post('/products', createProductController);
+router.post('/products', createProductsController);
 
 //get product by category
 router.get('/categories/:categoryId/products', (req, res) => {
   res.send('OK');
 });
-
-//delete product
 
 // list orders
 router.get('/orders', (req, res) => {

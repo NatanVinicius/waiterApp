@@ -3,7 +3,7 @@ import { ProductSchema } from '../../../schemas/product.schema.js';
 import { createProductssService } from '../../services/products/createProductsService.js';
 import { ZodError } from 'zod';
 
-export const createProductController = async (req: Request, res: Response) => {
+export const createProductsController = async (req: Request, res: Response) => {
   try {
     const data = ProductSchema.parse(req.body);
     const product = await createProductssService(data);
