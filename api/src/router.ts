@@ -4,6 +4,10 @@ import { createCategoriesController } from './app/controllers/categories/createC
 import { deleteCategoriesController } from './app/controllers/categories/deleteCategoriesController.js';
 import { createProductsController } from './app/controllers/products/createProductsController.js';
 import { listProductsController } from './app/controllers/products/listProductsController.js';
+import { listOrdersController } from './app/controllers/orders/listOrdersController.js';
+import { createOrdersController } from './app/controllers/orders/createOrdersController.js';
+import { deleteOrdersController } from './app/controllers/orders/deleteOrdersController.js';
+import { changeOrderStatusController } from './app/controllers/orders/changeOrderStatusController.js';
 
 export const router = Router();
 
@@ -29,20 +33,20 @@ router.get('/categories/:categoryId/products', (req, res) => {
 
 // list orders
 router.get('/orders', (req, res) => {
-  res.send('OK');
+  listOrdersController(res);
 });
 
 // create order
 router.post('/orders', (req, res) => {
-  res.send('OK');
+  createOrdersController(req, res);
 });
 
 // change order status
-router.patch('/orders/:orderId', (req, res) => {
-  res.send('OK');
+router.patch('/orders/:id', (req, res) => {
+  changeOrderStatusController(req, res);
 });
 
 //delete/cancel order
 router.delete('/orders/:orderId', (req, res) => {
-  res.send('OK');
+  deleteOrdersController(req, res);
 });
