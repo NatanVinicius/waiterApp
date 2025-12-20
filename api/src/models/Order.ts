@@ -8,8 +8,9 @@ export const Order = model(
       required: true,
     },
     status: {
+      type: String,
       enum: ['WAITING', 'PREPARING', 'DONE'],
-      reqeuired: true,
+      required: true,
       default: 'WAITING',
     },
     products: [
