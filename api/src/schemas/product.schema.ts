@@ -19,4 +19,9 @@ export const ProductSchema = z.object({
   imagePath: z.string().min(1, 'Image is required'),
 });
 
+export const ProductByCategorySchema = z.object({
+  categoryId: z.string(),
+});
+
 export type ProductDto = z.infer<typeof ProductSchema>;
+export type ProductByCategoryDto = z.infer<typeof ProductByCategorySchema>;

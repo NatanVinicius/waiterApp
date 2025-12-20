@@ -7,6 +7,7 @@ import { deleteCategoriesController } from './app/controllers/categories/deleteC
 import { createProductsController } from './app/controllers/products/createProductsController.js';
 import { listProductsController } from './app/controllers/products/listProductsController.js';
 import multer from 'multer';
+import { getProductByCategoryController } from './app/controllers/products/getProductsByCategoryController.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -39,9 +40,7 @@ router.get('/products', listProductsController);
 router.post('/products', uploads.single('image'), createProductsController);
 
 //get product by category
-router.get('/categories/:categoryId/products', (req, res) => {
-  res.send('OK');
-});
+router.get('/categories/:categoryId/products', getProductByCategoryController);
 
 // list orders
 router.get('/orders', (req, res) => {
