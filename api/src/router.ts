@@ -7,6 +7,7 @@ import { deleteCategoriesController } from './app/controllers/categories/deleteC
 import { createProductsController } from './app/controllers/products/createProductsController.js';
 import { listProductsController } from './app/controllers/products/listProductsController.js';
 import multer from 'multer';
+import { getProductByCategoryController } from './app/controllers/products/getProductsByCategoryController.js';
 import { listOrdersController } from './app/controllers/orders/listOrdersController.js';
 import { createOrdersController } from './app/controllers/orders/createOrdersController.js';
 import { deleteOrdersController } from './app/controllers/orders/deleteOrdersController.js';
@@ -43,9 +44,7 @@ router.get('/products', listProductsController);
 router.post('/products', uploads.single('image'), createProductsController);
 
 //get product by category
-router.get('/categories/:categoryId/products', (req, res) => {
-  res.send('OK');
-});
+router.get('/categories/:categoryId/products', getProductByCategoryController);
 
 // list orders
 router.get('/orders', (req, res) => {
