@@ -5,8 +5,14 @@ import { ZodError } from 'zod';
 
 export const createProductsController = async (req: Request, res: Response) => {
   try {
-    const data = ProductSchema.parse(req.body);
-    const product = await createProductssService(data);
+    const imagePath = req.file?.filename;
+    const dataProduct = {
+      ...req.body,
+      imagePath: imagePath,
+    };
+    const parsedBody = ProductSchema.parse(dataProduct);
+
+    const product = await createProductssService(parsedBody);
 
     res.status(201).json(product);
   } catch (error) {
