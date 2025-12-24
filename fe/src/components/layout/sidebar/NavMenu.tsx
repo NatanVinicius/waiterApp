@@ -1,7 +1,8 @@
-import { AsideMenuOption } from "../ui/AsideMenuOption";
+import { MenuOption } from "./MenuOption";
 import { MdHistory } from "react-icons/md";
 import { GrHomeRounded } from "react-icons/gr";
 import { BiFoodMenu } from "react-icons/bi";
+import { MdFoodBank } from "react-icons/md";
 
 export const NavMenu = () => {
   return (
@@ -12,9 +13,10 @@ export const NavMenu = () => {
             W<span className="font-light">A</span>
           </p>
         </div>
-        <AsideMenuOption icon={GrHomeRounded} text={"Home"} />
-        <AsideMenuOption icon={MdHistory} text={"Histórico"} />
-        <AsideMenuOption icon={BiFoodMenu} text={"Cardápio"} />
+        <MenuOption icon={GrHomeRounded} text={"Home"} routePath="/" />
+        <MenuOption icon={BiFoodMenu} text={"Cardápio"} routePath="/menu" />
+        <MenuOption icon={MdFoodBank} text={"Cozinha"} routePath="/kitchen" />
+        <MenuOption icon={MdHistory} text={"Histórico"} routePath="/history" />
       </aside>
     </>
   );
