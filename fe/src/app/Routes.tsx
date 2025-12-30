@@ -4,6 +4,7 @@ import { KitchenPage } from "../pages/kitchen/KitchenPage";
 import { HistoryPage } from "../pages/history/HistoryPage";
 import { MenuPage } from "../pages/menu/MenuPage";
 import { RootLayout } from "./layouts/RootLayout";
+import { HomePage } from "../pages/home/HomePage";
 
 export const routes = createBrowserRouter([
   {
@@ -11,6 +12,10 @@ export const routes = createBrowserRouter([
     children: [
       {
         path: "/",
+        element: <HomePage />,
+      },
+      {
+        path: "/waiter",
         element: <WaiterPage />,
       },
       {
