@@ -3,5 +3,5 @@ interface Props {
 }
 
 export const Container = ({ children }: Props) => {
-  return <div className="relative ml-27">{children}</div>;
+  return <div className="relative ml-27 p-10 bg-[#fafafa]">{children}</div>;
 };
