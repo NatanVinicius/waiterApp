@@ -1,10 +1,13 @@
+import type { Orders } from "../../mock/order.mock";
+import { CardStatusHomePage } from "./CardStatusHomePage";
+
 interface Props {
   title: string;
   icon: string;
-  children: React.ReactNode;
+  orders: Orders[];
 }
 
-export const CardGrid = ({ title, icon, children }: Props) => {
+export const CardGrid = ({ title, icon, orders }: Props) => {
   return (
     <>
       <div className="p-4 border flex flex-col gap-6 border-black/20 rounded-md">
@@ -12,7 +15,9 @@ export const CardGrid = ({ title, icon, children }: Props) => {
           <p className="font-bold">{`${icon} ${title}`}</p>
           <div className="px-1.5  bg-black/3 rounded-sm">1</div>
         </div>
-        {children}
+        {orders?.map((order) => (
+          <CardStatusHomePage order={order} />
+        ))}
       </div>
     </>
   );

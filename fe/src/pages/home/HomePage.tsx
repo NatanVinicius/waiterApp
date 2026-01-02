@@ -1,9 +1,23 @@
 import { GrHomeRounded } from "react-icons/gr";
 import { TfiReload } from "react-icons/tfi";
-import { CardStatusHomePage } from "./CardStatusHomePage";
 import { CardGrid } from "./CardGrid";
+import { useState } from "react";
+import { ordersMock, type Orders } from "../../mock/order.mock";
 
 export const HomePage = () => {
+  const [orders] = useState<Orders[]>(ordersMock);
+
+  const checkOrdersExists = () => {
+    if (orders.length == 0) {
+      return false;
+    }
+    return true;
+  };
+
+  const waitingOrders = orders.filter((order) => order.status == "WAITING");
+  const preparingOrders = orders.filter((order) => order.status == "PREPARING");
+  const doneOrders = orders.filter((order) => order.status == "DONE");
+
   return (
     <>
       <div className="flex items-center justify-between">
@@ -23,16 +37,22 @@ export const HomePage = () => {
           Reiniciar o dia
         </button>
       </div>
-      <div className="mt-12 grid grid-cols-3 gap-4">
-        <CardGrid icon={"🕘"} title="Em espera">
-          <CardStatusHomePage mesa={4} itens={2} />
-        </CardGrid>
-        <CardGrid icon={"👨‍🍳"} title="Em preparação">
-          <CardStatusHomePage mesa={3} itens={1} />
-        </CardGrid>
-        <CardGrid icon={"✅"} title="Pronto">
-          <CardStatusHomePage mesa={1} itens={6} />
-        </CardGrid>
+      <div className="mt-12 grid grid-cols-3 gap-4 items-start">
+        {checkOrdersExists() ? (
+          <>
+            <CardGrid icon={"🕘"} title="Em espera" orders={waitingOrders} />
+
+            <CardGrid
+              icon={"👨‍🍳"}
+              title="Em preparação"
+              orders={preparingOrders}
+            />
+
+            <CardGrid icon={"✅"} title="Pronto" orders={doneOrders} />
+          </>
+        ) : (
+          <p>No orders available</p>
+        )}
       </div>
     </>
   );
