@@ -1,15 +1,30 @@
+import { useState } from "react";
+import type { Orders } from "../../mock/order.mock";
+import { OrderModal } from "./OrderModal";
+
 interface Props {
-  mesa: number;
-  itens: number;
+  order: Orders;
 }
 
-export const CardStatusHomePage = ({ mesa, itens }: Props) => {
+export const CardStatusHomePage = ({ order }: Props) => {
+  const [handleOrderModal, setHandleOrderModal] = useState(false);
+
+  const handleOrderModalEvent = () => {
+    setHandleOrderModal(true);
+  };
+
   return (
     <>
-      <button className="min-h-30 flex flex-col items-center justify-center border gap-2 bg-white border-black/20 rounded-md cursor-pointer hover:bg-black/3 transition">
-        <h1>Mesa {`${mesa}`}</h1>
-        <p className="opacity-60">{`${itens}`} itens</p>
+      <button
+        className="min-h-30 flex flex-col items-center justify-center border gap-2 bg-white border-black/20 rounded-md cursor-pointer hover:bg-black/3 transition"
+        onClick={handleOrderModalEvent}
+      >
+        <h1>Mesa {`${order.table}`}</h1>
+        <p className="opacity-60">{`${order.products.length}`} itens</p>
       </button>
+      {handleOrderModal && (
+        <OrderModal order={order} setHandleOrderModal={setHandleOrderModal} />
+      )}
     </>
   );
 };
