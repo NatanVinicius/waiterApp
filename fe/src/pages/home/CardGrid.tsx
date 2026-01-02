@@ -15,8 +15,8 @@ export const CardGrid = ({ title, icon, orders }: Props) => {
           <p className="font-bold">{`${icon} ${title}`}</p>
           <div className="px-1.5  bg-black/3 rounded-sm">1</div>
         </div>
-        {orders?.map((order) => (
-          <CardStatusHomePage order={order} />
+        {orders?.map((order, index) => (
+          <CardStatusHomePage order={order} key={index} />
         ))}
       </div>
     </>

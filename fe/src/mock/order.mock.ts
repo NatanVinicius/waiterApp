@@ -25,32 +25,10 @@ export const ordersMock: Orders[] = [
     products: [
       {
         product: {
-          _id: "64f1c2a9e8b4a2c9d1234567",
-          name: "Cheeseburger",
+          _id: "6945ebd423367e2f4b4cab0b",
+          name: "Pizza Quatro Queijos",
           description: "Classic cheeseburger",
-          imagePath: "cheeseburger.png",
-          price: 29.9,
-          ingredients: [
-            { icon: "🍔", name: "Beef" },
-            { icon: "🧀", name: "Cheese" },
-          ],
-          category: "64f1c1b7e8b4a2c9d9999999",
-        },
-        quantity: 2,
-      },
-    ],
-  },
-
-  {
-    table: 1,
-    status: "DONE",
-    products: [
-      {
-        product: {
-          _id: "64f1c2a9e8b4a2c9d1234567",
-          name: "Cheeseburger",
-          description: "Classic cheeseburger",
-          imagePath: "cheeseburger.png",
+          imagePath: "1767391814192-frango-catupiry.png",
           price: 29.9,
           ingredients: [
             { icon: "🍔", name: "Beef" },
