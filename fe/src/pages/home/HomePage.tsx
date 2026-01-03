@@ -3,11 +3,13 @@ import { TfiReload } from "react-icons/tfi";
 import { CardGrid } from "./CardGrid";
 import { useEffect, useState } from "react";
 import { ordersMock, type Orders } from "../../mock/order.mock";
+import { useOrders } from "../../hooks/useOrders";
 import { HomePageSkeleton } from "./HomePageSkeleton";
 
 export const HomePage = () => {
   const [loading, setLoading] = useState(true);
   const [orders] = useState<Orders[]>(ordersMock);
+  const { data, isLoading, error } = useOrders();
 
   useEffect(() => {
     const timer = setTimeout(() => {
