@@ -5,3 +5,16 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-180%);
+  }
+  100% {
+    transform: translateX(180%);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 1.5s infinite linear;
+}
