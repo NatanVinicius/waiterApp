@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { Orders } from "../../mock/order.mock";
+import type { Orders } from "../../types/order";
 import { OrderModal } from "./OrderModal";
 
 interface Props {

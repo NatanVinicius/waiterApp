@@ -1,4 +1,4 @@
-import type { Orders } from "../../mock/order.mock";
+import type { Orders } from "../../types/order";
 import { CardStatusHomePage } from "./CardStatusHomePage";
 
 interface Props {

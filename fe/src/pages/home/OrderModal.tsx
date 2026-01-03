@@ -1,9 +1,11 @@
 import type { SetStateAction } from "react";
 import { IoMdClose } from "react-icons/io";
-import type { Orders } from "../../mock/order.mock";
+import type { Order } from "../../types/order";
+import { formatDate } from "../../utils/formatDate";
+import { formatCurrency } from "../../utils/formatCurrency";
 
 type OrderModalProps = {
-  order: Orders;
+  order: Order;
   setHandleOrderModal: React.Dispatch<SetStateAction<boolean>>;
 };
 
@@ -21,7 +23,7 @@ export const OrderModal = ({ order, setHandleOrderModal }: OrderModalProps) => {
         </header>
         <div>
           <p>Data do pedido</p>
-          <p className="font-bold">14/4/2025</p>
+          <p className="font-bold">{formatDate(order.createdAt)}</p>
         </div>
         <div className="flex flex-col gap-6">
           <p>Itens</p>
@@ -39,7 +41,9 @@ export const OrderModal = ({ order, setHandleOrderModal }: OrderModalProps) => {
                   </div>
                   <div>
                     <p className="font-bold">{product.product.name}</p>
-                    <p className="text-black/50">{product.product.price}</p>
+                    <p className="text-black/50">
+                      {formatCurrency(product.product.price)}
+                    </p>
                   </div>
                 </div>
               );
@@ -47,7 +51,7 @@ export const OrderModal = ({ order, setHandleOrderModal }: OrderModalProps) => {
           </div>
           <div className="flex justify-between">
             <p>Total:</p>
-            <p className="font-bold">R$ 0,00</p>
+            <p className="font-bold">{}</p>
           </div>
         </div>
         <div>
