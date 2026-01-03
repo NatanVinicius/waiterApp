@@ -1,11 +1,13 @@
 import { GrHomeRounded } from "react-icons/gr";
 import { TfiReload } from "react-icons/tfi";
 import { CardGrid } from "./CardGrid";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ordersMock, type Orders } from "../../mock/order.mock";
+import { useOrders } from "../../hooks/useOrders";
 
 export const HomePage = () => {
   const [orders] = useState<Orders[]>(ordersMock);
+  const { data, isLoading, error } = useOrders();
 
   const checkOrdersExists = () => {
     if (orders.length == 0) {
