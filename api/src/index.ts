@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import { router } from './router.js';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import * as cors from 'cors';
 
 mongoose
   .connect('mongodb://localhost:27017')
@@ -12,6 +13,12 @@ mongoose
     const app = express();
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
+
+    app.use(
+      cors.default({
+        origin: 'http://localhost:5173',
+      }),
+    );
 
     app.use('/uploads', express.static(path.resolve(__dirname, '..', 'uploads')));
 
