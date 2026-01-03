@@ -5,12 +5,14 @@ import { Header } from "../../components/layout/header/Header";
 
 export function RootLayout() {
   return (
-    <>
+    <div className="h-screen flex">
       <NavMenu />
-      <Header />
-      <Container>
-        <Outlet />
-      </Container>
-    </>
+      <div className="flex flex-col flex-1">
+        <Header />
+        <Container>
+          <Outlet />
+        </Container>
+      </div>
+    </div>
   );
 }
