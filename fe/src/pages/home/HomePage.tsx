@@ -4,17 +4,19 @@ import { CardGrid } from "./CardGrid";
 import { useEffect, useState } from "react";
 import { ordersMock, type Orders } from "../../mock/order.mock";
 import { useOrders } from "../../hooks/useOrders";
+import { HomePageSkeleton } from "./HomePageSkeleton";
 
 export const HomePage = () => {
+  const [loading, setLoading] = useState(true);
   const [orders] = useState<Orders[]>(ordersMock);
   const { data, isLoading, error } = useOrders();
 
-  const checkOrdersExists = () => {
-    if (orders.length == 0) {
-      return false;
-    }
-    return true;
-  };
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const waitingOrders = orders.filter((order) => order.status == "WAITING");
   const preparingOrders = orders.filter((order) => order.status == "PREPARING");
@@ -40,7 +42,7 @@ export const HomePage = () => {
         </button>
       </div>
       <div className="mt-12 grid grid-cols-3 gap-4 items-start">
-        {checkOrdersExists() ? (
+        {!loading ? (
           <>
             <CardGrid icon={"🕘"} title="Em espera" orders={waitingOrders} />
 
@@ -53,7 +55,7 @@ export const HomePage = () => {
             <CardGrid icon={"✅"} title="Pronto" orders={doneOrders} />
           </>
         ) : (
-          <p>No orders available</p>
+          <HomePageSkeleton />
         )}
       </div>
     </>
