@@ -20,3 +20,8 @@ export const deleteOrders = async (id: string) => {
   const deletedOrder = await Order.deleteOne({ _id: id });
   return deletedOrder;
 };
+
+export const deleteManyOrders = async () => {
+  const deletedOrder = await Order.deleteMany({});
+  return deletedOrder;
+};

@@ -12,6 +12,7 @@ import { listOrdersController } from './app/controllers/orders/listOrdersControl
 import { createOrdersController } from './app/controllers/orders/createOrdersController.js';
 import { deleteOrdersController } from './app/controllers/orders/deleteOrdersController.js';
 import { changeOrderStatusController } from './app/controllers/orders/changeOrderStatusController.js';
+import { deleteOrdersManyController } from './app/controllers/orders/deleteOrdersManyController.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -64,4 +65,8 @@ router.patch('/orders/:id', (req, res) => {
 //delete/cancel order
 router.delete('/orders/:orderId', (req, res) => {
   deleteOrdersController(req, res);
+});
+
+router.delete('/orders', (req, res) => {
+  deleteOrdersManyController(req, res);
 });

@@ -9,6 +9,5 @@ export const deleteOrdersService = async (id: string) => {
   }
 
   const orderDeleted = await deleteOrders(id);
-  console.log(orderDeleted);
   return orderDeleted;
 };
