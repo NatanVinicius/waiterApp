@@ -4,10 +4,13 @@ import { CardGrid } from "./CardGrid";
 import { useOrders } from "../../hooks/useOrders";
 import { HomePageSkeleton } from "./HomePageSkeleton";
 import type { Order } from "../../types/order";
+import { useState } from "react";
+import { ConfirmationModal } from "../../components/ui/ConfirmationModal";
 
 export const HomePage = () => {
-  const { data, isLoading, error } = useOrders();
+  const { data, isLoading } = useOrders();
   const orders: Order[] = data ?? [];
+  const [handleOpenResetDayModal, setHandleOpenResetDayModal] = useState(false);
 
   const waitingOrders = orders.filter((order) => order.status == "WAITING");
   const preparingOrders = orders.filter((order) => order.status == "PREPARING");
@@ -25,7 +28,10 @@ export const HomePage = () => {
             Acompanhe os pedidos dos clientes
           </p>
         </div>
-        <button className="flex items-center gap-2 text-[#D73035] cursor-pointer">
+        <button
+          className="flex items-center gap-2 text-[#D73035] cursor-pointer"
+          onClick={() => setHandleOpenResetDayModal(true)}
+        >
           <span>
             <TfiReload />
           </span>
@@ -37,15 +43,25 @@ export const HomePage = () => {
           <HomePageSkeleton />
         ) : (
           <>
-            <CardGrid icon={"🕘"} title="Em espera" orders={waitingOrders} />
+            {!handleOpenResetDayModal ? (
+              <>
+                <CardGrid
+                  icon={"🕘"}
+                  title="Em espera"
+                  orders={waitingOrders}
+                />
 
-            <CardGrid
-              icon={"👨‍🍳"}
-              title="Em preparação"
-              orders={preparingOrders}
-            />
+                <CardGrid
+                  icon={"👨‍🍳"}
+                  title="Em preparação"
+                  orders={preparingOrders}
+                />
 
-            <CardGrid icon={"✅"} title="Pronto" orders={doneOrders} />
+                <CardGrid icon={"✅"} title="Pronto" orders={doneOrders} />
+              </>
+            ) : (
+              <ConfirmationModal />
+            )}
           </>
         )}
       </div>
