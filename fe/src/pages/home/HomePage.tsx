@@ -29,7 +29,7 @@ export const HomePage = () => {
         <div>
           <div className="flex items-center gap-3">
             <GrHomeRounded size={21} />
-            <h2 className="font-bold text-2xl">Home</h2>
+            <h1 className="font-bold text-2xl">Home</h1>
           </div>
           <p className="mt-4 text-black opacity-60">
             Acompanhe os pedidos dos clientes

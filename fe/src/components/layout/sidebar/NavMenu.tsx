@@ -1,8 +1,7 @@
 import { MenuOption } from "./MenuOption";
-import { MdHistory } from "react-icons/md";
-import { GrHomeRounded } from "react-icons/gr";
-import { BiFoodMenu } from "react-icons/bi";
 import { MdFoodBank } from "react-icons/md";
+import { IoCreateOutline } from "react-icons/io5";
+import { GrConfigure } from "react-icons/gr";
 
 export const NavMenu = () => {
   return (
@@ -13,10 +12,17 @@ export const NavMenu = () => {
             W<span className="font-light">A</span>
           </p>
         </div>
-        <MenuOption icon={GrHomeRounded} text={"Home"} routePath="/" />
-        <MenuOption icon={BiFoodMenu} text={"Cardápio"} routePath="/menu" />
-        <MenuOption icon={MdFoodBank} text={"Cozinha"} routePath="/kitchen" />
-        <MenuOption icon={MdHistory} text={"Histórico"} routePath="/history" />
+        <MenuOption icon={MdFoodBank} text={"Cozinha"} routePath="/" />
+        <MenuOption
+          icon={IoCreateOutline}
+          text={"Garçom"}
+          routePath="/kitchen"
+        />
+        <MenuOption
+          icon={GrConfigure}
+          text={"Configurações"}
+          routePath="/history"
+        />
       </aside>
     </>
   );
