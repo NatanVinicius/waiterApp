@@ -3,7 +3,7 @@ import { TfiReload } from "react-icons/tfi";
 import { CardGrid } from "./CardGrid";
 import { useOrders } from "../../hooks/useOrders";
 import { HomePageSkeleton } from "./HomePageSkeleton";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ConfirmationModal } from "../../components/ui/ConfirmationModal";
 import { useDeleteManyOrders } from "../../hooks/useDeleteManyOrders";
 import type { Order } from "../../types/order";
@@ -25,6 +25,10 @@ export const HomePage = () => {
     (order: Order) => order.status == "PREPARING"
   );
   const doneOrders = orders.filter((order: Order) => order.status == "DONE");
+
+  useEffect(() => {
+    console.log(deletedOrdersError);
+  }, [deletedOrdersError]);
 
   return (
     <>
@@ -48,10 +52,10 @@ export const HomePage = () => {
           Reiniciar o dia
         </button>
       </div>
+      {deletedOrdersError && (
+        <div className="mt-4 text-red-500">{deletedOrdersError.message}</div>
+      )}
       <div className="mt-12 grid grid-cols-3 gap-4 items-start">
-        {deletedOrdersError && (
-          <div className="mt-4 text-red-500">{deletedOrdersError.message}</div>
-        )}
         {ordersPending ? (
           <HomePageSkeleton />
         ) : (
