@@ -3,20 +3,17 @@ import { TfiReload } from "react-icons/tfi";
 import { CardGrid } from "./CardGrid";
 import { useOrders } from "../../hooks/useOrders";
 import { HomePageSkeleton } from "./HomePageSkeleton";
-import { useEffect, useState } from "react";
 import { ConfirmationModal } from "../../components/ui/ConfirmationModal";
 import { useDeleteManyOrders } from "../../hooks/useDeleteManyOrders";
 import type { Order } from "../../types/order";
+import { useState } from "react";
 
 export const HomePage = () => {
   const { data: ordersData, isLoading: ordersPending } = useOrders();
   const orders: Order[] = ordersData ?? [];
   const [handleOpenResetDayModal, setHandleOpenResetDayModal] = useState(false);
-  const {
-    mutate: deleteManyOrders,
-    isPending: deletingOrders,
-    error: deletedOrdersError,
-  } = useDeleteManyOrders();
+  const { mutate: deleteManyOrders, isPending: deletingOrders } =
+    useDeleteManyOrders();
 
   const waitingOrders = orders.filter(
     (order: Order) => order.status == "WAITING"
@@ -25,10 +22,6 @@ export const HomePage = () => {
     (order: Order) => order.status == "PREPARING"
   );
   const doneOrders = orders.filter((order: Order) => order.status == "DONE");
-
-  useEffect(() => {
-    console.log(deletedOrdersError);
-  }, [deletedOrdersError]);
 
   return (
     <>
@@ -52,9 +45,6 @@ export const HomePage = () => {
           Reiniciar o dia
         </button>
       </div>
-      {deletedOrdersError && (
-        <div className="mt-4 text-red-500">{deletedOrdersError.message}</div>
-      )}
       <div className="mt-12 grid grid-cols-3 gap-4 items-start">
         {ordersPending ? (
           <HomePageSkeleton />
