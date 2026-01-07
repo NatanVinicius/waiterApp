@@ -76,6 +76,7 @@ export const OrderModal = ({ order, setHandleOrderModal }: OrderModalProps) => {
               disabled={isDeleting}
               onClick={() => {
                 handleDeleteOrder();
+                setHandleOrderModal(false);
               }}
             >
               {order.status == "DONE" ? "Deletar pedido" : "Cancelar pedido"}
