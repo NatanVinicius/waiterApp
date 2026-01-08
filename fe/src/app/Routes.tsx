@@ -1,10 +1,8 @@
 import { createBrowserRouter } from "react-router";
-import { WaiterPage } from "../pages/waiter/WaiterPage";
-import { KitchenPage } from "../pages/kitchen/KitchenPage";
-import { HistoryPage } from "../pages/history/HistoryPage";
-import { MenuPage } from "../pages/menu/MenuPage";
 import { RootLayout } from "./layouts/RootLayout";
 import { HomePage } from "../pages/home/HomePage";
+import { WaiterPage } from "../pages/waiter/WaiterPage";
+import { ConfigurationPage } from "../pages/configuration/MenuPage";
 
 export const routes = createBrowserRouter([
   {
@@ -15,20 +13,12 @@ export const routes = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "/waiter",
+        path: "/pedido",
         element: <WaiterPage />,
       },
       {
-        path: "/kitchen",
-        element: <KitchenPage />,
-      },
-      {
-        path: "/history",
-        element: <HistoryPage />,
-      },
-      {
-        path: "/menu",
-        element: <MenuPage />,
+        path: "/configuration",
+        element: <ConfigurationPage />,
       },
     ],
   },
