@@ -1,7 +1,6 @@
 import { IoCreateOutline } from "react-icons/io5";
 import { RowTable } from "./RowTable";
 import { LoadingSpinner } from "../../components/ui/loadingSpinner";
-import type { Order } from "../../types/order";
 import { useProducts } from "../../hooks/useProducts";
 import type { Product } from "../../types/product";
 
@@ -21,7 +20,10 @@ export const WaiterPage = () => {
       </div>
       <div className="mt-3 flex flex-col gap-3">
         <h2 className="font-bold">
-          Produtos <span className="font-normal bg-[#ccc]/20 px-2">0</span>
+          Produtos{" "}
+          <span className="font-normal bg-[#ccc]/20 px-2">
+            {productsData.length}
+          </span>
         </h2>
         <div className="flex items-center justify-center overflow-hidden rounded-xl border-[#ccc]/20 shadow-xs ">
           {productsLoading ? (

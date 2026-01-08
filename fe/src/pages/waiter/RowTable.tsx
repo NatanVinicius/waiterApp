@@ -22,7 +22,9 @@ export const RowTable = ({ product }: RowTableProps) => {
           />
         </td>
         <td className="p-2 text-sm text-[#333]bg-white">{product.name}</td>
-        <td className="p-2 text-sm text-[#333]bg-white">{product.category}</td>
+        <td className="p-2 text-sm text-[#333]bg-white">
+          {product.category.name}
+        </td>
         <td className="p-2 text-sm text-[#333]bg-white">
           {formatCurrency(product.price)}
         </td>

@@ -1,3 +1,5 @@
+import type { IconType } from "react-icons";
+
 export type Ingredient = {
   icon: string;
   name: string;
@@ -10,5 +12,9 @@ export type Product = {
   imagePath: string;
   price: number;
   ingredients: Ingredient[];
-  category: string;
+  category: {
+    icon: IconType;
+    name: string;
+    _id: string;
+  };
 };
