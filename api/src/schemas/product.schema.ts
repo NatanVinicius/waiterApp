@@ -14,7 +14,7 @@ export const ProductSchema = z.object({
       return JSON.parse(value);
     }
     return value;
-  }, z.array(IngredientSchema).optional()),
+  }, z.array(IngredientSchema)),
   category: z.string().min(1, 'Category is required.'),
   imagePath: z.string().min(1, 'Image is required'),
 });
