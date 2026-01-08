@@ -1,7 +1,6 @@
 import { MenuOption } from "./MenuOption";
 import { MdFoodBank } from "react-icons/md";
 import { IoCreateOutline } from "react-icons/io5";
-import { GrConfigure } from "react-icons/gr";
 
 export const NavMenu = () => {
   return (
@@ -15,13 +14,8 @@ export const NavMenu = () => {
         <MenuOption icon={MdFoodBank} text={"Cozinha"} routePath="/" />
         <MenuOption
           icon={IoCreateOutline}
-          text={"Garçom"}
-          routePath="/kitchen"
-        />
-        <MenuOption
-          icon={GrConfigure}
-          text={"Configurações"}
-          routePath="/history"
+          text={"Pedido"}
+          routePath="/pedido"
         />
       </aside>
     </>

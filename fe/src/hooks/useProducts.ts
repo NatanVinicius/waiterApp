@@ -1,13 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import { getOrders } from "../services/orders/getOrders";
+import { getProducts } from "../services/products/getProducts";
 import { useEffect } from "react";
 import { getAxiosErrorMessage } from "../utils/getAxiosErrorMessage";
 import toast from "react-hot-toast";
 
-export function useOrders() {
+export const useProducts = () => {
   const query = useQuery({
-    queryKey: ["orders"],
-    queryFn: getOrders,
+    queryKey: ["products"],
+    queryFn: getProducts,
   });
 
   const { isError, error } = query;
@@ -22,8 +22,8 @@ export function useOrders() {
       return;
     }
 
-    toast.error("Unexpected error while loading orders");
+    toast.error("Unexpected error while loading products.");
   }, [isError, error]);
 
   return query;
-}
+};
