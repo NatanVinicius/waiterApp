@@ -1,9 +1,8 @@
-import { Category } from '../../models/Category.js';
 import { Product } from '../../models/Product.js';
 import type { ProductDto } from '../../schemas/product.schema.js';
 
 export const listProducts = async () => {
-  return await Product.find({});
+  return await Product.find({}).populate('category');
 };
 
 export const createProducts = async (product: ProductDto) => {
