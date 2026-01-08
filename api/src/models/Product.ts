@@ -26,7 +26,7 @@ export const Product = model(
           name: { type: String, required: true },
         },
       ],
-      required: true,
+      required: false,
     },
     category: {
       type: Schema.Types.ObjectId,
