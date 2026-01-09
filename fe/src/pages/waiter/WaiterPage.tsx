@@ -3,9 +3,12 @@ import { RowTable } from "./RowTable";
 import { LoadingSpinner } from "../../components/ui/loadingSpinner";
 import { useProducts } from "../../hooks/useProducts";
 import type { Product } from "../../types/product";
+import { groupProductsByCategory } from "../../utils/groupProductsByCategory";
+import { useEffect } from "react";
 
 export const WaiterPage = () => {
   const { data: productsData, isLoading: productsLoading } = useProducts();
+  const groupedProducts = groupProductsByCategory(productsData ?? []);
 
   return (
     <>
@@ -22,7 +25,7 @@ export const WaiterPage = () => {
         <h2 className="font-bold">
           Produtos{" "}
           <span className="font-normal bg-[#ccc]/20 px-2">
-            {productsData.length}
+            {productsData?.length}
           </span>
         </h2>
         <div className="flex items-center justify-center overflow-hidden rounded-xl border-[#ccc]/20 shadow-xs ">
@@ -39,9 +42,18 @@ export const WaiterPage = () => {
                 </tr>
               </thead>
               <tbody>
-                {productsData.map((product: Product, index: number) => (
-                  <RowTable product={product} key={index} />
-                ))}
+                {Object.entries(groupedProducts).map(
+                  (
+                    [categoryName, products]: [string, Product[]],
+                    index: number
+                  ) => (
+                    <RowTable
+                      categoryName={categoryName}
+                      products={products}
+                      key={index}
+                    />
+                  )
+                )}
               </tbody>
             </table>
           )}
