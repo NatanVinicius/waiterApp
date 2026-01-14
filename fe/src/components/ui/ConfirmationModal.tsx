@@ -4,15 +4,19 @@ import { LoadingSpinner } from "./loadingSpinner";
 
 interface ConfirmationModalType {
   text: string;
-  setHandleOpenResetDayModal: React.Dispatch<SetStateAction<boolean>>;
+  setHandleOpenModal: React.Dispatch<SetStateAction<boolean>>;
   isLoading: boolean;
+  labelConfirm: string;
+  labelRefuse: string;
   onConfirm: () => void;
 }
 
 export const ConfirmationModal = ({
   text,
-  setHandleOpenResetDayModal,
+  setHandleOpenModal,
   isLoading,
+  labelConfirm,
+  labelRefuse,
   onConfirm,
 }: ConfirmationModalType) => {
   return (
@@ -33,19 +37,19 @@ export const ConfirmationModal = ({
                 <button
                   className="text-[#d73035] font-bold cursor-pointer"
                   onClick={() => {
-                    setHandleOpenResetDayModal(false);
+                    setHandleOpenModal(false);
                   }}
                 >
-                  Não, continuar pedidos
+                  {labelRefuse}
                 </button>
                 <button
                   className="px-4 py-2 bg-[#d73035] text-white font-bold rounded-xl cursor-pointer"
                   onClick={() => {
                     onConfirm();
-                    setHandleOpenResetDayModal(false);
+                    setHandleOpenModal(false);
                   }}
                 >
-                  Sim, reiniciar o dia
+                  {labelConfirm}
                 </button>
               </div>
             </>

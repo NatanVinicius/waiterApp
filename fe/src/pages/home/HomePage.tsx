@@ -65,8 +65,10 @@ export const HomePage = () => {
       {handleOpenResetDayModal && (
         <ConfirmationModal
           text="Essa ação vai remover todos os pedidos existentes, deseja continuar?"
-          setHandleOpenResetDayModal={setHandleOpenResetDayModal}
+          setHandleOpenModal={setHandleOpenResetDayModal}
           isLoading={deletingOrders}
+          labelConfirm="Sim, remover todos"
+          labelRefuse="Cancelar"
           onConfirm={() => {
             deleteManyOrders();
           }}

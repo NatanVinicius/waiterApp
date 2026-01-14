@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router";
 import { RootLayout } from "./layouts/RootLayout";
 import { HomePage } from "../pages/home/HomePage";
-import { WaiterPage } from "../pages/waiter/WaiterPage";
+import { MenuPage } from "../pages/menu/MenuPage";
 import { ConfigurationPage } from "../pages/configuration/MenuPage";
 
 export const routes = createBrowserRouter([
@@ -13,8 +13,8 @@ export const routes = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "/pedido",
-        element: <WaiterPage />,
+        path: "/menu",
+        element: <MenuPage />,
       },
       {
         path: "/configuration",

@@ -1,6 +1,6 @@
 import { MenuOption } from "./MenuOption";
 import { MdFoodBank } from "react-icons/md";
-import { IoCreateOutline } from "react-icons/io5";
+import { BiFoodMenu } from "react-icons/bi";
 
 export const NavMenu = () => {
   return (
@@ -12,11 +12,7 @@ export const NavMenu = () => {
           </p>
         </div>
         <MenuOption icon={MdFoodBank} text={"Cozinha"} routePath="/" />
-        <MenuOption
-          icon={IoCreateOutline}
-          text={"Pedido"}
-          routePath="/pedido"
-        />
+        <MenuOption icon={BiFoodMenu} text={"Cardápio"} routePath="/menu" />
       </aside>
     </>
   );
