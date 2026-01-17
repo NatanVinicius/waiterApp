@@ -1,16 +1,12 @@
-import { useEffect } from "react";
 import type { Product } from "../../types/product";
 import { formatCurrency } from "../../utils/formatCurrency";
 
-interface RowTableProps {
+type CategorySectionProps = {
   product: Product;
-}
+  category: string;
+};
 
-export const RowTable = ({ product }: RowTableProps) => {
-  useEffect(() => {
-    console.log(product);
-  }, [product]);
-
+export const RowTable = ({ product, category }: CategorySectionProps) => {
   return (
     <>
       <tr>
@@ -22,7 +18,7 @@ export const RowTable = ({ product }: RowTableProps) => {
           />
         </td>
         <td className="p-2 text-sm text-[#333]bg-white">{product.name}</td>
-        <td className="p-2 text-sm text-[#333]bg-white">{product.category}</td>
+        <td className="p-2 text-sm text-[#333]bg-white">{category}</td>
         <td className="p-2 text-sm text-[#333]bg-white">
           {formatCurrency(product.price)}
         </td>

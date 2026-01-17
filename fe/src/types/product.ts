@@ -1,3 +1,5 @@
+// import type { IconType } from "react-icons";
+
 export type Ingredient = {
   icon: string;
   name: string;
